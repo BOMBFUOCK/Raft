@@ -2,7 +2,7 @@ Raft 算法 Golang实现
 在实现算法之前，请多次阅读 https://raft.github.io/raft.pdf 
 确保能够了解图2中各部分的功能与作用
 
-https://github.com/BOMBFUOCK/Raft/blob/dc3002e97db63a3d18edb665964a19c380d9125d/%E6%88%AA%E5%B1%8F2023-01-04%20%E4%B8%8B%E5%8D%884.47.31.png
+![Alt text](https://github.com/BOMBFUOCK/Raft/blob/dc3002e97db63a3d18edb665964a19c380d9125d/%E6%88%AA%E5%B1%8F2023-01-04%20%E4%B8%8B%E5%8D%884.47.31.png)
 
 
 1.Server:
