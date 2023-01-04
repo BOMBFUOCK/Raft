@@ -48,30 +48,36 @@ This project assumes that there are 5 Servers for the sake of simplicity
 
         The relevant parameters are described in
                 Arguments:
-                        term Candidate's term
-                        candidateId candidate requesting vote
-                        lastLogIndex index of candidate's last log entry (§5.4) is the last index in each candidate's own log
-                        lastLogTerm term of candidate's last log entry (§5.4) is the Term of the current candidate
+                        term                            Candidate's term
+                        candidateId                     Candidate requesting vote
+                        lastLogIndex                    index of candidate's last log entry (§5.4) is the last index in each candidate's own log
+                        lastLogTerm                     term of candidate's last log entry (§5.4) is the Term of the current candidate
 
                 Results:
-                        term currentTerm for candidate to update itself When the request is sent, the candidate's Term is compared with the Term of the person who was asked to vote, so the parameter should be the newer one
-                        voteGranted true means candidate received vote means whether the candidate received a vote
+                        term                            currentTerm for candidate to update itself When the request is sent, the candidate's Term is compared with the Term of the person who was asked to vote, so the parameter should be the newer one
+
+                        voteGranted                     true means candidate received vote means whether the candidate received a vote
 
         In the implementation, if all the Servers survive, it is possible that one candidate will have two votes and the other three, but rest assured that since the heartbeat interval we give is interval random, there will be no imaginary conflict.
 
 ![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/state.png)
 3. State
-                currentTerm records the current Term of each Server
-                votedFor records whether or not the Server voted, thinking about what it should be when it becomes Follower, and if it is not set correctly, an election error will occur.
-                log[] logs
-                commitIndex The index of the logs for which more than half of all Servers have been successfully replicated,
-                lastApplied Maximum Index of logs that have performed an operation
+
+                currentTerm                             records the current Term of each Server
+                votedFor                                records whether or not the Server voted, thinking about what it should be when it becomes Follower, and if it is not set correctly, an election error will occur.
+                log[]                                   logs
+                commitIndex                             The index of the logs for which more than half of all Servers have been successfully replicated,
+
+                lastApplied                             Maximum Index of logs that have performed an operation
 
                 Unique to Leader
-                nextIndex[] records the Index of the next log to be added to each Server, which should be initialized as soon as it becomes a Leader
-                matchIndex[] records the maximum Index of each Server that has copied the Leader's Logs
+
+                nextIndex[]                             records the Index of the next log to be added to each Server, which should be initialized as soon as it becomes a Leader
+
+                matchIndex[]                            records the maximum Index of each Server that has copied the Leader's Logs
 
 ![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/append.png)
+
 4. AppendEntries RPC
 
                 term leader's term

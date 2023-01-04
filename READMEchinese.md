@@ -10,6 +10,7 @@ Raft 算法 Golang实现
 
 
 ![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/server.png)
+
 1.Server:
         在Raft中生效的节点只有三中状态即，Leader,Candiate,Follower
 
@@ -31,6 +32,7 @@ Raft 算法 Golang实现
 
         
 ![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/request.png)
+
 2.RequestVote RPC
         同一时间只能存在一位Leader,而根据选取机制，我们可以认为Leader是被Candiate选举得出的。
 
@@ -56,6 +58,7 @@ Raft 算法 Golang实现
         在实现过程中，如果Server全部存活，则有可能会出现一个候选人两个票，另一个候选人三张票，但是请放心，因为我们给予的心跳间隔是区间随机的，因此并不会出现想象中的冲突。
 
 ![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/state.png)
+
 3.State
                 currentTerm                     记录每个Server当前的Term
                 votedFor                        记录该Server是否投票，思考在成为Follower后其应该是什么，如果不能正确的设置，会出现选举错误。
@@ -68,6 +71,7 @@ Raft 算法 Golang实现
                 matchIndex[]                    记录每个Server已经复制该Leader的Log的最大Index
 
 ![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/append.png)
+
 4.AppendEntries RPC
 
                 term                            leader’s term
