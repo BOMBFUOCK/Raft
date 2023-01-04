@@ -80,17 +80,17 @@ This project assumes that there are 5 Servers for the sake of simplicity
 
 4. AppendEntries RPC
 
-                term leader's term
-                leaderId so follower can redirect clients
+                term                            leader's term
+                leaderId                        so follower can redirect clients
                                                 (determine which of the Follower's parameters should change at this point)
 
 
-                prevLogIndex index of log entry immediately preceding new ones
+                prevLogIndex                    index of log entry immediately preceding new ones
                                                 (this parameter records where the Leader should start intercepting logs to send to the Follower, thinking about the relationship to nextIndex)
 
                 prevLogTerm term of prevLogIndex entry
 
-                entries[] log entries to store (empty for heartbeat may send more than one for efficiency);
+                entries[]                       log entries to store (empty for heartbeat may send more than one for efficiency);
                                                 (Leader intercepts its own Log and sends it to Follower for replication)
                 
                 leaderCommit leader's commitIndex i.e. the value of half or more matchIndexes greater than
@@ -98,8 +98,8 @@ This project assumes that there are 5 Servers for the sake of simplicity
 
                 Results:
 
-                term currentTerm, for leader to update itself (note the setting in the condition)
-                success true if follower contained entry matching prevLogIndex and prevLogTerm
+                term currentTerm                for leader to update itself (note the setting in the condition)
+                success                         true if follower contained entry matching prevLogIndex and prevLogTerm
 
 
 
@@ -130,6 +130,3 @@ This project assumes that there are 5 Servers for the sake of simplicity
 
 
 7. Related courses recommended MIT6.824
-
-
- Translated with www.DeepL.com/Translator (free version)
