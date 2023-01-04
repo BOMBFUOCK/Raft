@@ -4,14 +4,14 @@ Raft Algorithm Golang Implementation
 Before implementing the algorithm, please read https://raft.github.io/raft.pdf several times 
 to ensure that you understand the function and role of each part in Figure 2
 
-! [Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/Figure2.png)
+![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/Figure2.png)
 
 This project assumes that there are 5 Servers for the sake of simplicity
 
 
 
 
-! [Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/server.png)
+![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/server.png)
 1. Server:
         There are only three states of nodes in effect in Raft, i.e. Leader, Candiate, Follower.
 
@@ -32,7 +32,7 @@ This project assumes that there are 5 Servers for the sake of simplicity
         
 
         
-! [Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/request.png)
+![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/request.png)
 2. RequestVote RPC
         There can only be one Leader at a time, and according to the selection mechanism, we can assume that the Leader is elected by Candiate.
 
@@ -57,7 +57,7 @@ This project assumes that there are 5 Servers for the sake of simplicity
 
         In the implementation, if all the Servers survive, it is possible that one candidate will have two votes and the other three, but rest assured that since the heartbeat interval we give is interval random, there will be no imaginary conflict.
 
-! [Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/state.png)
+![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/state.png)
 3. State
                 currentTerm records the current Term of each Server
                 votedFor records whether or not the Server voted, thinking about what it should be when it becomes Follower, and if it is not set correctly, an election error will occur.
@@ -69,7 +69,7 @@ This project assumes that there are 5 Servers for the sake of simplicity
                 nextIndex[] records the Index of the next log to be added to each Server, which should be initialized as soon as it becomes a Leader
                 matchIndex[] records the maximum Index of each Server that has copied the Leader's Logs
 
-! [Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/append.png)
+![Alt text](https://github.com/BOMBFUOCK/Raft/blob/main/png/append.png)
 4. AppendEntries RPC
 
                 term leader's term
