@@ -1,6 +1,8 @@
 Raft Algorithm Golang Implementation
 
 [中文版](https://github.com/BOMBFUOCK/Raft/blob/main/READMEchinese.md)
+
+
 Before implementing the algorithm, please read https://raft.github.io/raft.pdf several times 
 to ensure that you understand the function and role of each part in Figure 2
 
