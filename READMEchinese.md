@@ -1,3 +1,5 @@
+D:2022
+
 Raft 算法 Golang实现
 在实现算法之前，请多次阅读 https://raft.github.io/raft.pdf 
 确保能够了解图2中各部分的功能与作用
